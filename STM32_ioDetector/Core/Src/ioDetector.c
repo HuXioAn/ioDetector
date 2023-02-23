@@ -8,9 +8,12 @@
 #define BIT_RATE (8000)
 #define BIT_PERIOD_MS (1000.0/BIT_RATE)
 #define SAMPLE_RATE_IDLE (BIT_RATE*8)
-#define SAMPLE_RATE_MESSAGE (BIT_RATE*5)
+#define SAMPLE_TIMES_MESSAGE (5)
+#define SAMPLE_RATE_MESSAGE (BIT_RATE*SAMPLE_TIMES_MESSAGE)
 
 #define IDLE_LEVEL (0)
+
+#define MESSAGE_BITS (24)
 
 
 int probeRegister(probe_t* probe_p, GPIO_TypeDef* port, uint16_t pin, char* name){
@@ -42,7 +45,7 @@ int probeDetect(probe_t* probe_p, char* resultStr){
 	
 	uint32_t initTime = HAL_GetTick();
 	//起始段判断
-	while(20 > (HAL_GetTick()-initTime)){
+	while(BIT_PERIOD_MS*80 > (HAL_GetTick()-initTime)){
 		
 		uint8_t suc = 0;
 		
@@ -67,15 +70,28 @@ int probeDetect(probe_t* probe_p, char* resultStr){
 			initTimer(PROBE_TIMER,3*BIT_PERIOD_MS);
 			while(HAL_GPIO_ReadPin(probe_p->probePort,probe_p->probePin) == IDLE_LEVEL ){
 				if(checkTimer(PROBE_TIMER) == 0){
+					//等待同步位超时
 					suc = 0;
 					break;
 				}
 			}
 			
-			if(suc == 0){
+			if(suc == 1){
 				//得到了同步位
 				//信息段收集
-				
+				for(int i=0;i<MESSAGE_BITS+2;i++){
+					uint8_t samples=0;
+					for(int j=0;j<SAMPLE_TIMES_MESSAGE;j++){
+						
+						samples += HAL_GPIO_ReadPin(probe_p->probePort,probe_p->probePin);
+						if(j == SAMPLE_TIMES_MESSAGE -1){
+							probe_p->message = (samples >= (SAMPLE_TIMES_MESSAGE/2 + 1))?
+												(probe_p->message | (1<<i)):
+												(probe_p->message & ~(1<<i));
+						}
+						waitTimer(PROBE_TIMER);
+					}
+				}
 				
 				
 				break;
@@ -90,9 +106,19 @@ int probeDetect(probe_t* probe_p, char* resultStr){
 	
 	
 	//校验信息
+	if(verifyMessage(probe_p->message) == 0){
+		//输出结果
+		
+		
+		
+		return 0;
+	}else{
+		
+		
+		return -1;
+	}
 	
 	
-	//输出结果
 
 }
 
