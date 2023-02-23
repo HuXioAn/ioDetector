@@ -3,6 +3,7 @@
 #include "ioDetector.h"
 #include "stdio.h"
 #include <stdlib.h>
+#include "string.h"
 
 #define PROBE_TIMER TIM1
 #define BIT_RATE (8000)
@@ -39,7 +40,9 @@ int initTimer(TIM_TypeDef* tim,uint32_t sampleRate);
 int waitTimer(TIM_TypeDef* tim);
 int checkTimer(TIM_TypeDef* tim);
 
+
 int verifyMessage(uint32_t msg);
+int resultOutput(char* output,probe_t* probe_p);
 
 int probeDetect(probe_t* probe_p, char* resultStr){
 	
@@ -109,12 +112,11 @@ int probeDetect(probe_t* probe_p, char* resultStr){
 	if(verifyMessage(probe_p->message) == 0){
 		//输出结果
 		
-		
+		resultOutput(resultStr,probe_p);
 		
 		return 0;
 	}else{
-		
-		
+		sprintf(resultStr,"[!]GPIO: %s NO MESSAGE RECEIVED!!\n",probe_p->probeName);
 		return -1;
 	}
 	
@@ -125,8 +127,26 @@ int probeDetect(probe_t* probe_p, char* resultStr){
 
 int verifyMessage(uint32_t msg){
 	//奇偶校验
-
+	if(msg&0x01){
+		uint8_t check = 0;
+		for(int i=0;i<MESSAGE_BITS;i++){
+			check ^= msg>>(i+1);//偶校验
+		}
+		if((msg>>25) == check)return 0;
+		else return -1;
+	}else return -1;
+	
 }
+
+int resultOutput(char* output,probe_t* probe_p){
+	char msg[3] = {(probe_p->message & (0x1fe)) >> 1,
+					(probe_p->message & (0x1fe00)) >> 9,
+					(probe_p->message & (0x1fe0000)) >> 17};
+	
+	sprintf(output,"[*]GPIO: %s <---> %c%c%c\n",probe_p->probeName,msg[0],msg[1],msg[2]);
+}
+
+
 
 int initTimer(TIM_TypeDef* tim,uint32_t sampleRate);
 int waitTimer(TIM_TypeDef* tim);
