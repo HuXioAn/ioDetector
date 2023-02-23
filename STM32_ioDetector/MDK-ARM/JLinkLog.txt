@@ -1,0 +1,23 @@
+T464C 003:506.247   SEGGER J-Link V7.82 Log File
+T464C 003:506.362   DLL Compiled: Oct 13 2022 13:32:51
+T464C 003:506.377   Logging started @ 2023-02-23 10:25
+T464C 003:506.396 - 3506.402ms
+T464C 003:506.421 JLINK_SetWarnOutHandler(...)
+T464C 003:506.436 - 0.021ms
+T464C 003:506.450 JLINK_OpenEx(...)
+T464C 003:507.538   
+  ***** Error: 
+T464C 003:507.584   Cannot connect to J-Link.
+T464C 003:517.942 - 11.533ms returns "Cannot connect to J-Link."
+T464C 003:518.356 
+  ***** 
+T464C 003:518.392 API Error: API JLINK_GetHardwareVersion function called before JLINKARM_Open()
+T464C 003:518.416 JLINK_GetHardwareVersion()
+T464C 003:519.193   
+  ***** Error: 
+T464C 003:519.232   Cannot connect to J-Link.
+T464C 003:528.896 - 11.041ms
+T464C 007:055.126 JLINK_Close()
+T464C 007:055.256 - 0.134ms
+T464C 007:055.273   
+T464C 007:055.277   Closed
