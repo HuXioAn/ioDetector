@@ -12,7 +12,7 @@ typedef struct probe_s{
 }probe_t;
 
 
-int probeRegister(probe_t* probe_p, GPIO_TypeDef* port, uint16_t pin, char* name);
+int probeRegister(probe_t** probe_pp, GPIO_TypeDef* port, uint16_t pin, char* name);
 
 int probeUnregister(probe_t* p);
 

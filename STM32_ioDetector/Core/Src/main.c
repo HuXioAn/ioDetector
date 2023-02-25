@@ -18,8 +18,9 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include <stdio.h>
 #include "ioDetector.h"
+#include "uart.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -95,8 +96,10 @@ int main(void)
   char result[40]={0};
   
   probe_t* ptr = NULL;
-  probeRegister(ptr,GPIOF,GPIO_PIN_0,"PF0");
+  probeRegister(&ptr,GPIOF,GPIO_PIN_0,"PF0");
   probeDetect(ptr,result);
+  
+  printf("%s",result);
 
   /* USER CODE END 2 */
 

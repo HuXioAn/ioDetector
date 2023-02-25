@@ -26,8 +26,9 @@ static TIM_HandleTypeDef* probe_timer_handle = NULL;
 #define MESSAGE_BITS (24)
 
 
-extern int probeRegister(probe_t* probe_p, GPIO_TypeDef* port, uint16_t pin, char* name){
-	if(NULL != (probe_p = (probe_t*)malloc(sizeof(probe_t))) ){
+extern int probeRegister(probe_t** probe_pp, GPIO_TypeDef* port, uint16_t pin, char* name){
+	if(NULL != (*probe_pp = (probe_t*)malloc(sizeof(probe_t))) ){
+		probe_t* probe_p = *probe_pp;
 		probe_p->probePort = port;
 		probe_p->probePin = pin;
 		probe_p->message = 0;
@@ -153,7 +154,7 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 		
 		return 0;
 	}else{
-		sprintf(resultStr,"[!]GPIO: %s NO MESSAGE RECEIVED!!\n",probe_p->probeName);
+		sprintf(resultStr,"[!]GPIO: %s NO MESSAGE RECEIVED!!\n\r",probe_p->probeName);
 		return -1;
 	}
 	
