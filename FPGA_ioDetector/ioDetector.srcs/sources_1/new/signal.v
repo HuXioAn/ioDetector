@@ -2,7 +2,7 @@
 
 
 /*
-每个信道上的信息生成与发送单元
+每个信道上的信息生成与发送单�?
 */
 module signal(
     input bitClk,   //比特速率时钟
@@ -17,23 +17,23 @@ module signal(
     initial begin
         msg = {32'h0100_00_00,1'b0};
 
-        //取名称
-        if(i<10) msg[24:1] = {"0","0",i};
+        //取名�?
+        if(i<10) msg[24:1] = {"0","0",i+"0"};
         else if(i<100)begin
-            msg[24:1] = {"0",i/10,i%10};
+            msg[24:1] = {"0",i/10+"0",i%10+"0"};
         end
         else begin
-            msg[24:1] = {i/100,(i-100*(i/100))/10,i%10};
+            msg[24:1] = {i/100+"0",(i-100*(i/100))/10+"0",i%10+"0"};
         end
 
-        //偶校验
+        //偶校�?
         msg[0] = ^msg[24:1];
         
     end
 
 
     always@(posedge bitClk)begin
-        //循环发送msg
+        //循环发�?�msg
         io = msg[j];
         if(j == 0)j=32;
         else j=j-1;

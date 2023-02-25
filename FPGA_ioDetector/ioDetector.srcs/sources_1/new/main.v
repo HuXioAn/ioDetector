@@ -18,13 +18,41 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
+parameter clkFreq = 50000000;
+parameter bitRate = 8000;
+parameter ioNum = 50;
 
 module main(
     input clk,
-    output [49:0] io
+    output [ioNum-1:0] io
     );
-    //
+    //生成bit速率时钟信号
+    
+    reg [31:0]prescaler = 0;
+    reg bitClk;
+
+    always@(posedge clk)begin
+        if(prescaler == clkFreq/bitRate)begin
+            bitClk = ~bitClk;
+            prescaler = 0;
+        end
+        
+        prescaler = prescaler+1;
+    end
+
+
+    //例化每个io的signal模块
+    genvar i;
+    generate
+        for(i=0;i<ioNum;i=i+1)begin: io_signa
+            signal ioSignal(
+                .bitClk(bitClk),
+                .i(i),
+                .io(io[i])
+            );
+        end
+    endgenerate
+     
 
 
 endmodule
