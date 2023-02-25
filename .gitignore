@@ -20,7 +20,6 @@ RTE/
 Templates/
 Examples/
 .vscode/
-CMSIS/
 !*.uvprojx
 !*.h
 !*.c
