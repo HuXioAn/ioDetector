@@ -4,8 +4,11 @@
 #include "stdio.h"
 #include <stdlib.h>
 #include "string.h"
+#include "main.h"
 
-#define PROBE_TIMER TIM1
+#define PROBE_TIMER TIM1 //72MHz clk src
+#define PROBE_TIM_RCC_ENABLE __HAL_RCC_TIM1_CLK_ENABLE
+static TIM_HandleTypeDef* probe_timer_handle = NULL;
 //uint8_t PROBE_TIMER_LOCK = 0;
 
 
@@ -43,6 +46,26 @@ extern int probeUnregister(probe_t* p){
 }
 
 extern int ioDetectorTimerInit(void){
+	
+	PROBE_TIM_RCC_ENABLE();
+
+	static TIM_HandleTypeDef timHandle;
+	timHandle.Instance = PROBE_TIMER;
+	
+	
+	timHandle.Init.Prescaler = 36;
+	timHandle.Init.CounterMode = TIM_COUNTERMODE_DOWN;
+	timHandle.Init.Period = 0;
+	timHandle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+	timHandle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+	
+	if(HAL_TIM_Base_Init(&timHandle) != HAL_OK)Error_Handler();
+	
+	probe_timer_handle = &timHandle;
+	
+	__HAL_TIM_DISABLE(probe_timer_handle);
+	
+	return 0;
 
 	
 }
@@ -166,11 +189,18 @@ static int initTimer(TIM_TypeDef* tim,uint32_t periodUs){
 	if(tim){
 		if(periodUs != 0){
 			//设定自动填充计数器模式
+			__HAL_TIM_DISABLE(probe_timer_handle);
 			
-
+			__HAL_TIM_SET_AUTORELOAD(probe_timer_handle,periodUs<<1);
+			__HAL_TIM_SET_COUNTER(probe_timer_handle,periodUs<<2);
+			
+			__HAL_TIM_CLEAR_FLAG(probe_timer_handle,TIM_FLAG_UPDATE);
+			__HAL_TIM_ENABLE(probe_timer_handle);
+			return 0;
 		}else{
 			//关闭定时器
-
+			__HAL_TIM_DISABLE(probe_timer_handle);
+			return 0;
 		}
 	}else{
 		return -1;
@@ -181,15 +211,19 @@ static int initTimer(TIM_TypeDef* tim,uint32_t periodUs){
 
 
 static int waitTimer(TIM_TypeDef* tim){
-
+	//阻塞等待
+	while(!__HAL_TIM_GET_FLAG(probe_timer_handle,TIM_FLAG_UPDATE));
+	
+	__HAL_TIM_CLEAR_FLAG(probe_timer_handle,TIM_FLAG_UPDATE);
+	
+	return 0;
 
 	
 }
 
 
 static int checkTimer(TIM_TypeDef* tim){
-
-
+	return !(__HAL_TIM_GET_FLAG(probe_timer_handle,TIM_FLAG_UPDATE));
 }
 
 
