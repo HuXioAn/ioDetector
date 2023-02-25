@@ -19,6 +19,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
+#include "ioDetector.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -87,7 +89,14 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART1_UART_Init();
+  
+  ioDetectorTimerInit();
   /* USER CODE BEGIN 2 */
+  char result[40]={0};
+  
+  probe_t* ptr = NULL;
+  probeRegister(ptr,GPIOF,GPIO_PIN_0,"PF0");
+  probeDetect(ptr,result);
 
   /* USER CODE END 2 */
 
