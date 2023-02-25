@@ -18,6 +18,8 @@ int probeUnregister(probe_t* p);
 
 int probeDetect(probe_t* probe_p, char* resultStr);
 
+int ioDetectorTimerInit(void);
+
 
 
 #endif
