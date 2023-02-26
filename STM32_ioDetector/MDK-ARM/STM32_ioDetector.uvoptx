@@ -157,18 +157,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>102</LineNumber>
+          <LineNumber>150</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223000</Address>
+          <Address>134224050</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>../Core/Src/main.c</Filename>
+          <Filename>..\Core\Src\ioDetector.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32_ioDetector\../Core/Src/main.c\102</Expression>
+          <Expression>\\STM32_ioDetector\../Core/Src/ioDetector.c\150</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>

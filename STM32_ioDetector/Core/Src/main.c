@@ -19,47 +19,25 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include <stdio.h>
+#include <string.h>
 #include "ioDetector.h"
 #include "uart.h"
+#include "stm32f1xx_hal.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 
-/* USER CODE END Includes */
+#define pinNum (24)
 
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart1;
 
-/* USER CODE BEGIN PV */
 
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART1_UART_Init(void);
-/* USER CODE BEGIN PFP */
 
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
@@ -94,12 +72,39 @@ int main(void)
   ioDetectorTimerInit();
   /* USER CODE BEGIN 2 */
   char result[40]={0};
-  
   probe_t* ptr = NULL;
-  probeRegister(&ptr,GPIOF,GPIO_PIN_0,"PF0");
-  probeDetect(ptr,result);
   
-  printf("%s",result);
+  GPIO_TypeDef* portArray[pinNum] = 
+					{GPIOF,GPIOF,GPIOF,GPIOF,GPIOF,GPIOF,
+						GPIOF,GPIOF,GPIOF,GPIOF,
+						GPIOD,GPIOD,GPIOD,
+						GPIOD,GPIOD,GPIOD,GPIOD,GPIOD,
+						GPIOB,GPIOB,GPIOB,GPIOB,GPIOB,GPIOB,
+								};
+					
+	uint16_t pinArray[pinNum] = {
+							GPIO_PIN_0,GPIO_PIN_1,GPIO_PIN_2,GPIO_PIN_3,
+                          GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_6,GPIO_PIN_7,
+                          GPIO_PIN_8,GPIO_PIN_9,
+		
+							GPIO_PIN_0,GPIO_PIN_1,GPIO_PIN_2,GPIO_PIN_3,
+                          GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_6,GPIO_PIN_7,
+		
+							GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_6,GPIO_PIN_7,
+                          GPIO_PIN_8,GPIO_PIN_9,
+	};
+	
+	char pinStr[6];
+	
+  
+  for(int i=0;i<pinNum;i++){
+	sprintf(pinStr,"PIN%d",i);
+	probeRegister(&ptr,GPIOF,GPIO_PIN_0,pinStr);
+	probeDetect(ptr,result);
+	printf("%s",result);
+	probeUnregister(ptr);
+  
+  }
 
   /* USER CODE END 2 */
 
