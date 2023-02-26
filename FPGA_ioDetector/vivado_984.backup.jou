@@ -1,0 +1,461 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Feb 25 19:08:20 2023
+# Process ID: 984
+# Current directory: G:/zynq/ioDetector/FPGA_ioDetector
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2408 G:\zynq\ioDetector\FPGA_ioDetector\ioDetector.xpr
+# Log file: G:/zynq/ioDetector/FPGA_ioDetector/vivado.log
+# Journal file: G:/zynq/ioDetector/FPGA_ioDetector\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -name rtl_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list {io[49]} {io[48]} {io[47]} {io[46]} {io[45]} {io[44]} {io[43]} {io[42]} {io[41]} {io[40]} {io[39]} {io[38]} {io[37]} {io[36]} {io[35]} {io[34]} {io[33]} {io[32]} {io[31]} {io[30]} {io[29]} {io[28]} {io[27]} {io[26]} {io[25]} {io[24]} {io[23]} {io[22]} {io[21]} {io[20]} {io[19]} {io[18]} {io[17]} {io[16]} {io[15]} {io[14]} {io[13]} {io[12]} {io[11]} {io[10]} {io[9]} {io[8]} {io[7]} {io[6]} {io[5]} {io[4]} {io[3]} {io[2]} {io[1]} {io[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {io[49]} {io[48]} {io[47]} {io[46]} {io[45]} {io[44]} {io[43]} {io[42]} {io[41]} {io[40]} {io[39]} {io[38]} {io[37]} {io[36]} {io[35]} {io[34]} {io[33]} {io[32]} {io[31]} {io[30]} {io[29]} {io[28]} {io[27]} {io[26]} {io[25]} {io[24]} {io[23]} {io[22]} {io[21]} {io[20]} {io[19]} {io[18]} {io[17]} {io[16]} {io[15]} {io[14]} {io[13]} {io[12]} {io[11]} {io[10]} {io[9]} {io[8]} {io[7]} {io[6]} {io[5]} {io[4]} {io[3]} {io[2]} {io[1]} {io[0]}]]
+place_ports {io[31]} T5 {io[44]} T9 {io[49]} W8 {io[46]} Y7 {io[39]} V8 {io[47]} Y8 {io[36]} U8 {io[48]} Y9 {io[38]} W9 {io[41]} V7 {io[42]} U7 {io[45]} Y6 {io[43]} U10 {io[40]} V5 {io[37]} W10 {io[34]} Y11 {io[35]} U9 {io[33]} W11 {io[32]} U5 {io[30]} Y13 {io[29]} Y12 {io[28]} V10 {io[27]} V11 {io[26]} W6 {io[25]} V6
+place_ports {io[24]} W14 {io[17]} T15 {io[6]} T16 {io[19]} R14 {io[23]} Y14 {io[20]} P14 {io[9]} T10 {io[22]} Y16 {io[16]} V12 {io[1]} U19 {io[18]} T14 {io[21]} Y17 {io[15]} W13 {io[14]} U13 {io[4]} V15 {io[13]} V13 {io[12]} T12 {io[11]} U12 {io[10]} T11 {io[2]} U14 {io[8]} R19 {io[7]} U17 {io[5]} W15 {io[3]} U15 {io[0]} U18
+place_ports {io[19]} V16
+place_ports {io[20]} W16
+place_ports {io[6]} V17
+place_ports {io[17]} V18
+place_ports {io[18]} W18
+place_ports {io[8]} Y18
+set_property target_constrs_file G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/constrs_1/new/cons.xdc [current_fileset -constrset]
+save_constraints -force
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_bd_design {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd}
+create_bd_cell -type module -reference main main_1
+delete_bd_objs [get_bd_cells main_1]
+set_property is_enabled false [get_files  G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/new/main.v]
+update_module_reference ioDetector_main_0_0
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+add_files -norecurse G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/new/main.v
+set_property is_enabled true [get_files  G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/new/main.v]
+update_compile_order -fileset sources_1
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+set_property PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'b1 [get_hw_probes ioDetector_i/main_0_triggerClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+save_wave_config {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
+close_hw
+create_ip_run [get_files -of_objects [get_fileset sources_1] G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+refresh_design
+open_bd_design {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd}
+update_module_reference ioDetector_main_0_0
+startgroup
+set_property -dict [list CONFIG.C_PROBE2_WIDTH {32} CONFIG.C_NUM_OF_PROBES {3}] [get_bd_cells ila_0]
+endgroup
+connect_bd_net [get_bd_pins main_0/prescaler] [get_bd_pins ila_0/probe2]
+startgroup
+set_property -dict [list CONFIG.C_PROBE1_TYPE {0} CONFIG.C_PROBE0_TYPE {0}] [get_bd_cells ila_0]
+endgroup
+save_bd_design
+reset_run synth_1
+reset_run ioDetector_ila_0_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {ioDetector_i/main_0_triggerClk} }
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {ioDetector_i/main_0_prescaler} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+save_wave_config {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
+close_hw
+launch_simulation
+create_ip_run [get_files -of_objects [get_fileset sources_1] G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+refresh_design
+open_bd_design {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd}
+update_module_reference ioDetector_main_0_0
+startgroup
+set_property -dict [list CONFIG.C_NUM_OF_PROBES {4}] [get_bd_cells ila_0]
+endgroup
+connect_bd_net [get_bd_pins main_0/bitClk] [get_bd_pins ila_0/probe3]
+save_bd_design
+generate_target all [get_files  G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+catch { config_ip_cache -export [get_ips -all ioDetector_ila_0_0] }
+export_ip_user_files -of_objects [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+launch_runs -jobs 8 {ioDetector_ila_0_0_synth_1 ioDetector_main_0_0_synth_1}
+export_simulation -of_objects [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -directory G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files/sim_scripts -ip_user_files_dir G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files -ipstatic_source_dir G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files/ipstatic -lib_map_path [list {modelsim=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/modelsim} {questa=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/questa} {riviera=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/riviera} {activehdl=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+make_wrapper -files [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -top
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {ioDetector_i/main_0_bitClk} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bX [get_hw_probes ioDetector_i/main_0_triggerClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property CONTROL.CAPTURE_MODE BASIC [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+set_property CAPTURE_COMPARE_VALUE eq1'b1 [get_hw_probes ioDetector_i/main_0_triggerClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property CAPTURE_COMPARE_VALUE eq1'bX [get_hw_probes ioDetector_i/main_0_triggerClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property CAPTURE_COMPARE_VALUE eq1'bR [get_hw_probes ioDetector_i/main_0_bitClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property CAPTURE_COMPARE_VALUE eq1'bX [get_hw_probes ioDetector_i/main_0_bitClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+save_wave_config {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
+close_hw
+open_bd_design {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd}
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {65536}] [get_bd_cells ila_0]
+endgroup
+validate_bd_design
+generate_target all [get_files  G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+catch { config_ip_cache -export [get_ips -all ioDetector_ila_0_0] }
+export_ip_user_files -of_objects [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+launch_runs -jobs 8 ioDetector_ila_0_0_synth_1
+export_simulation -of_objects [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -directory G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files/sim_scripts -ip_user_files_dir G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files -ipstatic_source_dir G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files/ipstatic -lib_map_path [list {modelsim=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/modelsim} {questa=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/questa} {riviera=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/riviera} {activehdl=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+make_wrapper -files [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -top
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {4096}] [get_bd_cells ila_0]
+endgroup
+generate_target all [get_files  G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+catch { config_ip_cache -export [get_ips -all ioDetector_ila_0_0] }
+catch { [ delete_ip_run [get_ips -all ioDetector_ila_0_0] ] }
+export_ip_user_files -of_objects [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+export_simulation -of_objects [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -directory G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files/sim_scripts -ip_user_files_dir G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files -ipstatic_source_dir G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files/ipstatic -lib_map_path [list {modelsim=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/modelsim} {questa=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/questa} {riviera=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/riviera} {activehdl=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+make_wrapper -files [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -top
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property CAPTURE_COMPARE_VALUE eq1'bR [get_hw_probes ioDetector_i/main_0_bitClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property CAPTURE_COMPARE_VALUE eq1'bX [get_hw_probes ioDetector_i/main_0_bitClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+set_property CAPTURE_COMPARE_VALUE eq1'bR [get_hw_probes ioDetector_i/main_0_triggerClk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+save_wave_config {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
+close_hw
+open_bd_design {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd}
+create_bd_cell -type module -reference signal signal_0
+set_property location {2 626 -80} [get_bd_cells signal_0]
+set_property location {3 835 -7} [get_bd_cells signal_0]
+connect_bd_net [get_bd_pins main_0/bitClk] [get_bd_pins signal_0/bitClk]
+startgroup
+create_bd_port -dir I -from 7 -to 0 i
+connect_bd_net [get_bd_pins /signal_0/i] [get_bd_ports i]
+endgroup
+set_property location {555 -1} [get_bd_ports i]
+set_property location {642 33} [get_bd_ports i]
+set_property location {641 24} [get_bd_ports i]
+set_property location {701 24} [get_bd_ports i]
+set_property location {757 125} [get_bd_ports i]
+set_property location {768 143} [get_bd_ports i]
+set_property location {763 111} [get_bd_ports i]
+delete_bd_objs [get_bd_nets i_1] [get_bd_ports i]
+startgroup
+make_bd_pins_external  [get_bd_cells signal_0]
+make_bd_intf_pins_external  [get_bd_cells signal_0]
+endgroup
+set_property location {464 22} [get_bd_ports i_0]
+delete_bd_objs [get_bd_nets i_0_1] [get_bd_ports i_0]
+close [ open G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/new/EXAMPLE_SIG.v w ]
+add_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/new/EXAMPLE_SIG.v
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference EXAMPLE_SIG EXAMPLE_SIG_0
+set_property location {2 576 8} [get_bd_cells EXAMPLE_SIG_0]
+connect_bd_net [get_bd_pins EXAMPLE_SIG_0/O] [get_bd_pins signal_0/i]
+startgroup
+set_property -dict [list CONFIG.C_NUM_OF_PROBES {5}] [get_bd_cells ila_0]
+endgroup
+connect_bd_net [get_bd_pins ila_0/probe4] [get_bd_pins signal_0/io]
+save_bd_design
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+wait_on_run ioDetector_ila_0_0_synth_1
+reset_run synth_1
+reset_run ioDetector_ila_0_0_synth_1
+open_bd_design {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd}
+validate_bd_design -force
+generate_target all [get_files  G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+export_ip_user_files -of_objects [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+launch_runs -jobs 8 ioDetector_ila_0_0_synth_1
+export_simulation -of_objects [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -directory G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files/sim_scripts -ip_user_files_dir G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files -ipstatic_source_dir G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.ip_user_files/ipstatic -lib_map_path [list {modelsim=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/modelsim} {questa=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/questa} {riviera=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/riviera} {activehdl=G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+make_wrapper -files [get_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd] -top
+create_ip_run [get_files -of_objects [get_fileset sources_1] G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd]
+refresh_design
+set_property IOSTANDARD LVCMOS33 [get_ports [list io_0]]
+place_ports io_0 Y19
+set_property SLEW FAST [get_ports [list {io[49]} {io[48]} {io[47]} {io[46]} {io[45]} {io[44]} {io[43]} {io[42]} {io[41]} {io[40]} {io[39]} {io[38]} {io[37]} {io[36]} {io[35]} {io[34]} {io[33]} {io[32]} {io[31]} {io[30]} {io[29]} {io[28]} {io[27]} {io[26]} {io[25]} {io[24]} {io[23]} {io[22]} {io[21]} {io[20]} {io[19]} {io[18]} {io[17]} {io[16]} {io[15]} {io[14]} {io[13]} {io[12]} {io[11]} {io[10]} {io[9]} {io[8]} {io[7]} {io[6]} {io[5]} {io[4]} {io[3]} {io[2]} {io[1]} {io[0]}]]
+set_property SLEW FAST [get_ports [list io_0]]
+save_constraints
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.runs/impl_1/ioDetector_wrapper.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {ioDetector_i/signal_0_io} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ioDetector_i/ila_0"}]]
+save_wave_config {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
+close_hw
+open_bd_design {G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/bd/ioDetector/ioDetector.bd}
+delete_bd_objs [get_bd_nets EXAMPLE_SIG_0_O] [get_bd_cells EXAMPLE_SIG_0]
+delete_bd_objs [get_bd_cells signal_0]
+delete_bd_objs [get_bd_nets signal_0_io] [get_bd_ports io_0]
+update_compile_order -fileset sources_1
+undo
+undo
+undo
+update_compile_order -fileset sources_1
+delete_bd_objs [get_bd_nets EXAMPLE_SIG_0_O] [get_bd_cells EXAMPLE_SIG_0]
+delete_bd_objs [get_bd_cells signal_0]
+delete_bd_objs [get_bd_nets signal_0_io] [get_bd_ports io_0]
+update_compile_order -fileset sources_1
+validate_bd_design
+close [ open G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/new/test.v w ]
+add_files G:/zynq/ioDetector/FPGA_ioDetector/ioDetector.srcs/sources_1/new/test.v
+update_compile_order -fileset sources_1
+save_bd_design
+close_project
+create_project signalTest G:/zynq/signalTest -part xc7z020clg400-2
+file mkdir G:/zynq/signalTest/signalTest.srcs/sources_1/new
+close [ open G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v w ]
+add_files G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v
+file mkdir G:/zynq/signalTest/signalTest.srcs/constrs_1/new
+close [ open G:/zynq/signalTest/signalTest.srcs/constrs_1/new/cons.xdc w ]
+add_files -fileset constrs_1 G:/zynq/signalTest/signalTest.srcs/constrs_1/new/cons.xdc
+update_compile_order -fileset sources_1
+file mkdir G:/zynq/signalTest/signalTest.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open G:/zynq/signalTest/signalTest.srcs/sim_1/new/tb.v w ]
+add_files -fileset sim_1 G:/zynq/signalTest/signalTest.srcs/sim_1/new/tb.v
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+set_property -name {xsim.simulate.runtime} -value {100ms} -objects [get_filesets sim_1]
+launch_simulation
+source tb.tcl
+run all
+close_sim
+launch_simulation
+source tb.tcl
+run all
+close_sim
+launch_simulation
+source tb.tcl
+run all
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 34
+remove_bps -file {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} -line 34
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 34
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 53
+run all
+close_sim
+launch_simulation
+source tb.tcl
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 37
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 38
+run all
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 39
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 42
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 46
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 51
+remove_bps -file {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} -line 51
+run all
+run all
+close_sim
+launch_simulation
+source tb.tcl
+run all
+run all
+run all
+close_sim
+launch_simulation
+source tb.tcl
+run all
+run all
+run all
+close_sim
+launch_simulation
+source tb.tcl
+remove_bps -file {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} -line 38
+remove_bps -file {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} -line 39
+remove_bps -file {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} -line 42
+run all
+add_bp {G:/zynq/signalTest/signalTest.srcs/sources_1/new/main.v} 62
+run all
+close_sim
