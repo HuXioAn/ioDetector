@@ -88,7 +88,7 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 		uint8_t suc = 0;
 		
 		//初始化定时器
-		initTimer(PROBE_TIMER,5*BIT_PERIOD_US);
+		initTimer(PROBE_TIMER,12*BIT_PERIOD_US);
 		
 		//检测大于6bit的idle
 		while(HAL_GPIO_ReadPin(probe_p->probePort,probe_p->probePin) == IDLE_LEVEL){
@@ -105,7 +105,7 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 		//检测同步位
 		if(suc == 1){
 			//超时时钟
-			initTimer(PROBE_TIMER,3*BIT_PERIOD_US);
+			initTimer(PROBE_TIMER,10*BIT_PERIOD_US);
 			while(HAL_GPIO_ReadPin(probe_p->probePort,probe_p->probePin) == IDLE_LEVEL ){
 				if(checkTimer(PROBE_TIMER) == 0){
 					//等待同步位超时
@@ -119,7 +119,7 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 				//信息段收集
 				
 				initTimer(PROBE_TIMER,BIT_PERIOD_US/SAMPLE_TIMES_MESSAGE);//采样周期定时
-				for(int i=0;i<MESSAGE_BITS+2;i++){//message采样
+				for(int i=MESSAGE_BITS+1;i>=0;i--){//message采样
 					uint8_t samples=0;
 					for(int j=0;j<SAMPLE_TIMES_MESSAGE;j++){//单个bit采样
 						
@@ -147,7 +147,7 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 	
 	
 	//校验信息
-	if(verifyMessage(probe_p->message) == 0){
+    if(verifyMessage(probe_p->message) == 0){
 		//输出结果
 		
 		resultOutput(resultStr,probe_p);
@@ -160,7 +160,7 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 	
 	
 
-}
+}    
 
 
 static int verifyMessage(uint32_t msg){
@@ -194,7 +194,7 @@ static int initTimer(TIM_TypeDef* tim,uint32_t periodUs){
 			__HAL_TIM_DISABLE(probe_timer_handle);
 			
 			__HAL_TIM_SET_AUTORELOAD(probe_timer_handle,periodUs<<1);
-			__HAL_TIM_SET_COUNTER(probe_timer_handle,periodUs<<2);
+			__HAL_TIM_SET_COUNTER(probe_timer_handle,periodUs<<1);
 			
 			__HAL_TIM_CLEAR_FLAG(probe_timer_handle,TIM_FLAG_UPDATE);
 			__HAL_TIM_ENABLE(probe_timer_handle);

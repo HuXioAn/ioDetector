@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sun Feb 26 15:37:37 2023
+//Date        : Sun Feb 26 18:23:20 2023
 //Host        : DESKTOP-P16EN60 running 64-bit major release  (build 9200)
 //Command     : generate_target ioDetector_wrapper.bd
 //Design      : ioDetector_wrapper
@@ -31,7 +31,7 @@ module ioDetector_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
-    io);
+    io_1);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -53,7 +53,7 @@ module ioDetector_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
-  output [49:0]io;
+  output [99:0]io_1;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -76,7 +76,7 @@ module ioDetector_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
-  wire [49:0]io;
+  wire [99:0]io_1;
 
   ioDetector ioDetector_i
        (.DDR_addr(DDR_addr),
@@ -100,5 +100,5 @@ module ioDetector_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
-        .io(io));
+        .io_1(io_1));
 endmodule

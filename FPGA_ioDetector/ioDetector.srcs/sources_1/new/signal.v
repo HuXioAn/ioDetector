@@ -1,8 +1,10 @@
 `timescale 1ns / 1ps
 
-
+parameter headSeg = 16;
+parameter msgSeg = 24;
+parameter veriSeg = 1;
 /*
-每个信道上的信息生成与发送单�?????
+每个信道上的信息生成与发送单�??????
 */
 module signal(
     input bitClk,   //比特速率时钟
@@ -10,13 +12,14 @@ module signal(
     output reg io
     );
 
-    reg [32:0]msg;
-    reg[7:0] j = 8'd32;
+    reg [(headSeg+msgSeg+veriSeg-1):0]msg;
+    reg[7:0] j = (headSeg+msgSeg+veriSeg-1);
     reg [7:0] a,b,c;
 
 
     always@(i)begin
-        msg = {32'h0100_00_00,1'b0};
+        //msg = {32'h0100_00_00,1'b0};
+        msg = {{(headSeg-1){1'b0}},1'b1,{(msgSeg){1'b0}},{veriSeg{1'b0}}};
 
         if(i<10) begin
                 c[7:0] = i+48;
@@ -42,7 +45,7 @@ module signal(
         //循环发�?�msg
         io <= msg[j];
     
-        if(j == 0)j<=8'd32;
+        if(j == 0)j<=headSeg+msgSeg+veriSeg-1;
         else j<=j-1;
 
     end

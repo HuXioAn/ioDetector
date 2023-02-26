@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Sun Feb 26 15:44:37 2023
+| Date             : Sun Feb 26 18:30:53 2023
 | Host             : DESKTOP-P16EN60 running 64-bit major release  (build 9200)
 | Command          : report_power -file ioDetector_wrapper_power_routed.rpt -pb ioDetector_wrapper_power_summary_routed.pb -rpx ioDetector_wrapper_power_routed.rpx
 | Design           : ioDetector_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.547        |
+| Total On-Chip Power (W)  | 1.555        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.414        |
-| Device Static (W)        | 0.133        |
+| Dynamic (W)              | 1.421        |
+| Device Static (W)        | 0.134        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 67.2         |
-| Junction Temperature (C) | 42.8         |
+| Max Ambient (C)          | 67.1         |
+| Junction Temperature (C) | 42.9         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,21 +52,21 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.009 |        4 |       --- |             --- |
-| Slice Logic              |     0.003 |     9621 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     2860 |     53200 |            5.38 |
-|   Register               |    <0.001 |     4559 |    106400 |            4.28 |
-|   CARRY4                 |    <0.001 |      140 |     13300 |            1.05 |
+| Clocks                   |     0.011 |        4 |       --- |             --- |
+| Slice Logic              |     0.005 |    10697 |       --- |             --- |
+|   LUT as Logic           |     0.004 |     3241 |     53200 |            6.09 |
+|   Register               |    <0.001 |     5061 |    106400 |            4.76 |
+|   CARRY4                 |    <0.001 |      152 |     13300 |            1.14 |
 |   LUT as Distributed RAM |    <0.001 |      152 |     17400 |            0.87 |
-|   F7/F8 Muxes            |    <0.001 |       93 |     53200 |            0.17 |
-|   LUT as Shift Register  |    <0.001 |      314 |     17400 |            1.80 |
-|   Others                 |     0.000 |      783 |       --- |             --- |
-| Signals                  |     0.002 |     6488 |       --- |             --- |
-| Block RAM                |     0.003 |        6 |       140 |            4.29 |
-| I/O                      |     0.000 |       50 |       125 |           40.00 |
+|   F7/F8 Muxes            |    <0.001 |       92 |     53200 |            0.17 |
+|   LUT as Shift Register  |    <0.001 |      387 |     17400 |            2.22 |
+|   Others                 |     0.000 |      925 |       --- |             --- |
+| Signals                  |     0.003 |     6998 |       --- |             --- |
+| Block RAM                |     0.006 |     11.5 |       140 |            8.21 |
+| I/O                      |     0.000 |      100 |       125 |           80.00 |
 | PS7                      |     1.397 |        1 |       --- |             --- |
-| Static Power             |     0.133 |          |           |                 |
-| Total                    |     1.547 |          |           |                 |
+| Static Power             |     0.134 |          |           |                 |
+| Total                    |     1.555 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.031 |       0.017 |      0.014 |
+| Vccint    |       1.000 |     0.038 |       0.024 |      0.014 |
 | Vccaux    |       1.800 |     0.015 |       0.000 |      0.015 |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -85,7 +85,7 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.001 |       0.000 |      0.001 |
+| Vccbram   |       1.000 |     0.002 |       0.000 |      0.002 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
@@ -153,15 +153,15 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| ioDetector_wrapper       |     1.414 |
+| ioDetector_wrapper       |     1.421 |
 |   dbg_hub                |     0.002 |
 |     inst                 |     0.002 |
 |       BSCANID.u_xsdbm_id |     0.002 |
-|   ioDetector_i           |     1.412 |
-|     ila_0                |     0.012 |
-|       inst               |     0.012 |
-|     main_0               |     0.003 |
-|       inst               |     0.003 |
+|   ioDetector_i           |     1.419 |
+|     ila_0                |     0.016 |
+|       inst               |     0.016 |
+|     main_0               |     0.006 |
+|       inst               |     0.006 |
 |     processing_system7_0 |     1.397 |
 |       inst               |     1.397 |
 +--------------------------+-----------+

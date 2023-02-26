@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 parameter clkFreq = 50000000;
 parameter bitRate = 8000;
-parameter ioNum = 50;
+parameter ioNum = 100;
 
 module main(
     input clk,

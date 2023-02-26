@@ -166,7 +166,7 @@ proc create_root_design { parentCell } {
   set FIXED_IO [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 FIXED_IO ]
 
   # Create ports
-  set io [ create_bd_port -dir O -from 49 -to 0 io ]
+  set io_1 [ create_bd_port -dir O -from 99 -to 0 io_1 ]
 
   # Create instance: ila_0, and set properties
   set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
@@ -180,7 +180,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_NUM_OF_PROBES {2} \
    CONFIG.C_PROBE0_MU_CNT {2} \
    CONFIG.C_PROBE0_TYPE {0} \
-   CONFIG.C_PROBE0_WIDTH {50} \
+   CONFIG.C_PROBE0_WIDTH {100} \
    CONFIG.C_PROBE1_TYPE {0} \
    CONFIG.C_PROBE2_WIDTH {1} \
    CONFIG.C_PROBE5_WIDTH {1} \
@@ -232,7 +232,7 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net main_0_bitClk [get_bd_pins ila_0/probe1] [get_bd_pins main_0/bitClk]
-  connect_bd_net -net main_0_io [get_bd_ports io] [get_bd_pins ila_0/probe0] [get_bd_pins main_0/io]
+  connect_bd_net -net main_0_io [get_bd_ports io_1] [get_bd_pins ila_0/probe0] [get_bd_pins main_0/io]
   connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins ila_0/clk] [get_bd_pins main_0/clk] [get_bd_pins processing_system7_0/FCLK_CLK0]
 
   # Create address segments

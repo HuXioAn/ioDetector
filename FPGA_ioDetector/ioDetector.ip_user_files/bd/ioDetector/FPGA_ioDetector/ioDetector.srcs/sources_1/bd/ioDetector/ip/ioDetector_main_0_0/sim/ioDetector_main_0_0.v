@@ -63,7 +63,7 @@ module ioDetector_main_0_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 50000000, PHASE 0.000, CLK_DOMAIN ioDetector_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
-output wire [49 : 0] io;
+output wire [99 : 0] io;
 output wire bitClk;
 
   main inst (

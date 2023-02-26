@@ -5,6 +5,6 @@
 (* X_CORE_INFO = "ila,Vivado 2018.3" *)
 module ioDetector_ila_0_0(clk, probe0, probe1);
   input clk;
-  input [49:0]probe0;
+  input [99:0]probe0;
   input [0:0]probe1;
 endmodule

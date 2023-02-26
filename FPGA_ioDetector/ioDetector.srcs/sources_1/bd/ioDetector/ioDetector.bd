@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3D392F85A8B4039B",
+      "boundary_crc": "0x821E02D86487C469",
       "device": "xc7z020clg400-2",
       "name": "ioDetector",
       "synth_flow_mode": "Hierarchical",
@@ -80,9 +80,9 @@
       }
     },
     "ports": {
-      "io": {
+      "io_1": {
         "direction": "O",
-        "left": "49",
+        "left": "99",
         "right": "0"
       }
     },
@@ -146,7 +146,7 @@
             "value": "0"
           },
           "C_PROBE0_WIDTH": {
-            "value": "50"
+            "value": "100"
           },
           "C_PROBE1_TYPE": {
             "value": "0"
@@ -187,7 +187,7 @@
           },
           "io": {
             "direction": "O",
-            "left": "49",
+            "left": "99",
             "right": "0"
           },
           "bitClk": {
@@ -222,7 +222,7 @@
         "ports": [
           "main_0/io",
           "ila_0/probe0",
-          "io"
+          "io_1"
         ]
       },
       "main_0_bitClk": {

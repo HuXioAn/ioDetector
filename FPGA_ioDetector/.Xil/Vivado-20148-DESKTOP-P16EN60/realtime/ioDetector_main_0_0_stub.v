@@ -5,6 +5,6 @@
 (* X_CORE_INFO = "main,Vivado 2018.3" *)
 module ioDetector_main_0_0(clk, io, bitClk);
   input clk;
-  output [49:0]io;
+  output [99:0]io;
   output bitClk;
 endmodule

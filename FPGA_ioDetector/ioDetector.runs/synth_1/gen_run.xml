@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-2" LaunchTime="1677397196">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-2" LaunchTime="1677407299">
   <File Type="PA-TCL" Name="ioDetector_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="ioDetector_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="ioDetector_wrapper_reports.tcl"/>
@@ -69,5 +69,6 @@
     <Step Id="synth_design"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="ioDetector_processing_system7_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="ioDetector_ila_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="ioDetector_main_0_0"/>
 </GenRun>

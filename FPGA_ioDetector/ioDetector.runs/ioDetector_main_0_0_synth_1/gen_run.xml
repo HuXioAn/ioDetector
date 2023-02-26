@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="ioDetector_main_0_0_synth_1" LaunchPart="xc7z020clg400-2" LaunchTime="1677397061">
+<GenRun Id="ioDetector_main_0_0_synth_1" LaunchPart="xc7z020clg400-2" LaunchTime="1677407002">
   <File Type="PA-TCL" Name="ioDetector_main_0_0.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="ioDetector_main_0_0_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="ioDetector_main_0_0_reports.tcl"/>

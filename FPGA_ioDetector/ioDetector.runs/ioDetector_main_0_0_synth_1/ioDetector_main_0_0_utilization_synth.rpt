@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Sun Feb 26 15:38:17 2023
+| Date         : Sun Feb 26 18:24:14 2023
 | Host         : DESKTOP-P16EN60 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file ioDetector_main_0_0_utilization_synth.rpt -pb ioDetector_main_0_0_utilization_synth.pb
 | Design       : ioDetector_main_0_0
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |  381 |     0 |     53200 |  0.72 |
-|   LUT as Logic          |  381 |     0 |     53200 |  0.72 |
+| Slice LUTs*             |  744 |     0 |     53200 |  1.40 |
+|   LUT as Logic          |  744 |     0 |     53200 |  1.40 |
 |   LUT as Memory         |    0 |     0 |     17400 |  0.00 |
-| Slice Registers         |  466 |     0 |    106400 |  0.44 |
-|   Register as Flip Flop |  466 |     0 |    106400 |  0.44 |
+| Slice Registers         |  767 |     0 |    106400 |  0.72 |
+|   Register as Flip Flop |  767 |     0 |    106400 |  0.72 |
 |   Register as Latch     |    0 |     0 |    106400 |  0.00 |
 | F7 Muxes                |    0 |     0 |     26600 |  0.00 |
 | F8 Muxes                |    0 |     0 |     13300 |  0.00 |
@@ -57,7 +57,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 466   |          Yes |       Reset |            - |
+| 767   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -146,14 +146,13 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |  466 |        Flop & Latch |
-| LUT4     |  153 |                 LUT |
-| LUT5     |  144 |                 LUT |
-| LUT6     |  134 |                 LUT |
-| LUT3     |   85 |                 LUT |
-| LUT2     |   45 |                 LUT |
+| FDRE     |  767 |        Flop & Latch |
+| LUT6     |  516 |                 LUT |
+| LUT4     |  141 |                 LUT |
+| LUT5     |  105 |                 LUT |
+| LUT3     |   34 |                 LUT |
+| LUT2     |   17 |                 LUT |
 | CARRY4   |    8 |          CarryLogic |
-| LUT1     |    1 |                 LUT |
 +----------+------+---------------------+
 
 
