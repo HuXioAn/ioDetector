@@ -24,20 +24,30 @@ parameter ioNum = 50;
 
 module main(
     input clk,
-    output [ioNum-1:0] io
+    output [ioNum-1:0] io,
+    output reg triggerClk,
+    output reg [31:0] prescaler=0,
+    output reg bitClk = 0
     );
     //生成bit速率时钟信号
     
-    reg [31:0]prescaler = 0;
-    reg bitClk;
+    
+    reg [31:0]triggerPrescaler = 0;
+    
 
     always@(posedge clk)begin
         if(prescaler == clkFreq/bitRate)begin
-            bitClk = ~bitClk;
-            prescaler = 0;
+            bitClk <= ~bitClk;
+            prescaler <= 0;
+        end
+
+        if(triggerPrescaler == clkFreq/(4*bitRate))begin
+            triggerClk <= ~triggerClk;
+            triggerPrescaler <= 0;
         end
         
-        prescaler = prescaler+1;
+        prescaler = prescaler + 1;
+        triggerPrescaler = triggerPrescaler + 1;
     end
 
 

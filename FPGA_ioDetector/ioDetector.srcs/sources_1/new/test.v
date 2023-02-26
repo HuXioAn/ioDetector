@@ -2,24 +2,28 @@
 
 
 /*
-æ¯ä¸ªä¿¡é“ä¸Šçš„ä¿¡æ¯ç”Ÿæˆä¸å‘é€å•ï¿½?????
+Ã¿¸öĞÅµÀÉÏµÄĞÅÏ¢Éú³ÉÓë·¢ËÍµ¥?????
 */
-module signal(
-    input bitClk,   //æ¯”ç‰¹é€Ÿç‡æ—¶é’Ÿ
-    input [7:0] i,  //ioç¼–å·
-    output reg io
+module test(
+    input bitClk,   //±ÈÌØËÙÂÊÊ±ÖÓ
+    //input [7:0] i,  //io±àºÅ
+    output reg io,
+    output reg[7:0] j=8'd32,
+    output reg [32:0] msg
     );
+    
+    reg [7:0]i = 5;
 
-    reg [32:0]msg;
-    reg[7:0] j = 8'd32;
+    //reg [32:0]msg;
+    //reg[7:0] j = 8'd32;
     reg [7:0] a,b,c;
 
-/*
-    //åˆå§‹ç”Ÿæˆmessage
+    //³õÊ¼Éú³Émessage
     initial begin
         msg = {32'h0100_00_00,1'b0};
-
-        //å–åï¿½?????
+        //msg = {32'hff00_ff00,1'b1};
+        /*
+        //È¡Ãû?????
          if(i<10) begin
                 c[7:0] = i+48;
                 msg[24:1] = {8'd48,8'd48,c};
@@ -35,44 +39,26 @@ module signal(
             c = i%10+8'd48;
             msg[24:1] = {a,b,c};
         end
+        
+        */
 
-        //å¶æ ¡ï¿½?????
-        msg[0] = ^msg[24:1];
-
+        //Å¼Ğ£?????
+        //msg[0] = ^msg[24:1];
+        
+        
         
     end
-*/
-    always@(i)begin
-        msg = {32'h0100_00_00,1'b0};
-
-        if(i<10) begin
-                c[7:0] = i+48;
-                msg[24:1] = {8'd48,8'd48,c};
-            end
-        else if(i<100)begin
-            b[7:0] = i/10+8'd48;
-            c[7:0] = i%10+8'd48;
-            msg[24:1] = {8'd48,b,c};
-        end
-        else begin
-            a = i/100+8'd48;
-            b = (i-100*(i/100))/10+8'd48;
-            c = i%10+8'd48;
-            msg[24:1] = {a,b,c};
-        end
-
-        msg[0] = ^msg[24:1];
-    end
+    
 
 
     always@(posedge bitClk)begin
-        //å¾ªç¯å‘ï¿½?ï¿½msg
-        io <= msg[j];
+        //Ñ­»··¢???msg
+        //io <= msg[j];
         
         //io <= ~io;
         //if(j == 0)j<=8'h32;
         //else j<=j-1;
-        /*
+
         case (j)
             0:io<=msg[0];
             1:io<=msg[1];
@@ -111,7 +97,7 @@ module signal(
             default: 
                 io <= 1'b0;
         endcase
-        */
+
         if(j == 0)j<=8'd32;
         else j<=j-1;
 
