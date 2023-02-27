@@ -11,15 +11,19 @@ message:
 
 |*起始段*|*三字节信息段*|*偶校验*|
 
-
 */
+
+#define MSG_HEAD_SEG (16)
+#define MSG_CONTENT_SEG (24)
+#define MSG_VERI_SEG (1)
+
+#define MSG_LENGTH (MSG_HEAD_SEG+MSG_CONTENT_SEG+MSG_VERI_SEG)
 
 
 
 #define PROBE_TIMER TIM1 //72MHz clk src
 #define PROBE_TIM_RCC_ENABLE __HAL_RCC_TIM1_CLK_ENABLE
 static TIM_HandleTypeDef* probe_timer_handle = NULL;
-//uint8_t PROBE_TIMER_LOCK = 0;
 
 
 
@@ -33,7 +37,7 @@ static TIM_HandleTypeDef* probe_timer_handle = NULL;
 
 #define IDLE_LEVEL (0)
 
-#define MESSAGE_BITS (24)
+#define MESSAGE_BITS (MSG_CONTENT_SEG)
 
 
 extern int probeRegister(probe_t** probe_pp, GPIO_TypeDef* port, uint16_t pin, char* name){
@@ -64,7 +68,7 @@ extern int ioDetectorTimerInit(void){
 	timHandle.Instance = PROBE_TIMER;
 	
 	
-	timHandle.Init.Prescaler = 36;
+	timHandle.Init.Prescaler = 36-1;
 	timHandle.Init.CounterMode = TIM_COUNTERMODE_DOWN;
 	timHandle.Init.Period = 0;
 	timHandle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -93,22 +97,25 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 	
 	uint32_t initTime = HAL_GetTick();
 	//起始段判断
-	while(BIT_PERIOD_MS*80 > (HAL_GetTick()-initTime)){
+	while(BIT_PERIOD_MS*120 > (HAL_GetTick()-initTime)){
 		
 		uint8_t suc = 0;
 		
 		//初始化定时器
-		initTimer(PROBE_TIMER,12*BIT_PERIOD_US);
-		
-		//检测大于6bit的idle
-		while(HAL_GPIO_ReadPin(probe_p->probePort,probe_p->probePin) == IDLE_LEVEL){
-			if(checkTimer(PROBE_TIMER) == 0){//定时器到位
-				//监测成功
-				suc = 1;
-				break;
+		initTimer(PROBE_TIMER,(MSG_HEAD_SEG-2)*BIT_PERIOD_US);
+		while(1){
+			uint8_t pinState = HAL_GPIO_ReadPin(probe_p->probePort,probe_p->probePin);
+			if(pinState == IDLE_LEVEL){
+				if(checkTimer(PROBE_TIMER) == 0){//定时器到位
+					//监测成功
+					suc = 1;
+					break;
+				}else{
+					//没到时间继续
+					continue;
+				}
 			}else{
-				//没到时间继续
-				continue;
+				break;
 			}
 		}
 		
@@ -145,40 +152,39 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 
 				//message获取完毕
 				initTimer(PROBE_TIMER,0);//关闭定时器
-				break;
+					//校验信息
+				if(verifyMessage(probe_p->message) == 0){
+					//输出结果
+					
+					resultOutput(resultStr,probe_p);
+					
+					return 0;
+				}
+	
+				
 			}
 				
 		}
+		
+		//如果未等待到起始低电平，延时后再检查
+		initTimer(PROBE_TIMER,BIT_PERIOD_US/2);
+		waitTimer(PROBE_TIMER);
+		initTimer(PROBE_TIMER,0);
 	
 	}
 	
-	
-	
-	
-	
-	//校验信息
-    if(verifyMessage(probe_p->message) == 0){
-		//输出结果
-		
-		resultOutput(resultStr,probe_p);
-		
-		return 0;
-	}else{
-		sprintf(resultStr,"[!]GPIO: %s NO MESSAGE RECEIVED!!\n\r",probe_p->probeName);
-		return -1;
-	}
-	
-	
+	sprintf(resultStr,"[!]GPIO: %s NO MESSAGE RECEIVED!!\n\r",probe_p->probeName);
+	return -1;
 
 }    
 
 
 static int verifyMessage(uint32_t msg){
 	//奇偶校验
-	if(msg&(0x01<<25)){//确认起始位
+	if(msg&(0x01<<(MSG_CONTENT_SEG+1))){//确认起始位
 		uint8_t check = 0;
-		for(int i=0;i<MESSAGE_BITS;i++){
-			check ^= ( msg>>(i+1) )&0x00000001;//偶校验
+		for(int i=0;i<MSG_CONTENT_SEG;i++){
+			check ^= (( msg>>(i+1) )&0x00000001);//偶校验
 		}
 		if((msg&0x00000001) == (check&0x01))return 0;
 		else return -1;
@@ -191,7 +197,7 @@ static int resultOutput(char* output,probe_t* probe_p){
 					(probe_p->message & (0x1fe00)) >> 9,
 					(probe_p->message & (0x1fe0000)) >> 17};
 	
-	sprintf(output,"[*]GPIO: %s <---> %c%c%c\n",probe_p->probeName,msg[0],msg[1],msg[2]);
+	sprintf(output,"[*]GPIO: %s <---> %c%c%c\n\r",probe_p->probeName,msg[0],msg[1],msg[2]);
 	return 0;
 }
 
