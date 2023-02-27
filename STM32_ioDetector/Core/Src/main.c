@@ -93,24 +93,29 @@ int main(void)
 							GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_6,GPIO_PIN_7,
                           GPIO_PIN_8,GPIO_PIN_9,
 	};
-	
+
 	char pinStr[6];
 	
   
   for(int i=0;i<pinNum;i++){
 	sprintf(pinStr,"PIN%d",i);
-	probeRegister(&ptr,GPIOF,GPIO_PIN_0,pinStr);
+	probeRegister(&ptr,portArray[i],pinArray[i],pinStr);
 	probeDetect(ptr,result);
 	printf("%s",result);
 	probeUnregister(ptr);
   
   }
+	
+	
+
+  
+  printf("[*]ALL PINS DONE.\n\r\n\r\n\r");
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
+   while (1)
   {
     /* USER CODE END WHILE */
 	
