@@ -6,6 +6,16 @@
 #include "string.h"
 #include "main.h"
 
+/*
+message:
+
+|*起始段*|*三字节信息段*|*偶校验*|
+
+
+*/
+
+
+
 #define PROBE_TIMER TIM1 //72MHz clk src
 #define PROBE_TIM_RCC_ENABLE __HAL_RCC_TIM1_CLK_ENABLE
 static TIM_HandleTypeDef* probe_timer_handle = NULL;
@@ -165,12 +175,12 @@ extern int probeDetect(probe_t* probe_p, char* resultStr){
 
 static int verifyMessage(uint32_t msg){
 	//奇偶校验
-	if(msg&0x01){
+	if(msg&(0x01<<25)){//确认起始位
 		uint8_t check = 0;
 		for(int i=0;i<MESSAGE_BITS;i++){
-			check ^= msg>>(i+1);//偶校验
+			check ^= ( msg>>(i+1) )&0x00000001;//偶校验
 		}
-		if((msg>>25) == check)return 0;
+		if((msg&0x00000001) == (check&0x01))return 0;
 		else return -1;
 	}else return -1;
 	
