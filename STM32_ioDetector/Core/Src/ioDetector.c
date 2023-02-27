@@ -197,7 +197,7 @@ static int resultOutput(char* output,probe_t* probe_p){
 					(probe_p->message & (0x1fe00)) >> 9,
 					(probe_p->message & (0x1fe0000)) >> 17};
 	
-	sprintf(output,"[*]GPIO: %s <---> %c%c%c\n\r",probe_p->probeName,msg[0],msg[1],msg[2]);
+	sprintf(output,"[*]GPIO: %s <---> %c%c%c\n\r",probe_p->probeName,msg[2],msg[1],msg[0]);
 	return 0;
 }
 
