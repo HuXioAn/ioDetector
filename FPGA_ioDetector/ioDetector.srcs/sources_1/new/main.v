@@ -32,7 +32,7 @@ module main(
     
     
     always@(posedge clk)begin
-        if(prescaler == clkFreq/bitRate)begin
+        if(prescaler == clkFreq/(2*bitRate)-1)begin
             bitClk <= ~bitClk;
             prescaler <= 0;
         end
