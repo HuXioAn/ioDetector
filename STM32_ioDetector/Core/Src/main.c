@@ -95,12 +95,13 @@ int main(void)
 	};
 
 	char pinStr[6];
+	int valid_count = 0;
 	
   
   for(int i=0;i<pinNum;i++){
 	sprintf(pinStr,"PIN%d",i);
 	probeRegister(&ptr,portArray[i],pinArray[i],pinStr);
-	probeDetect(ptr,result);
+	  if(0==probeDetect(ptr,result))valid_count++;
 	printf("%s",result);
 	probeUnregister(ptr);
   
@@ -109,7 +110,7 @@ int main(void)
 	
 
   
-  printf("[*]ALL PINS DONE.\n\r\n\r\n\r");
+  printf("[*]ALL PINS DONE. Valid IO %d.\n\r\n\r\n\r",valid_count);
 
   /* USER CODE END 2 */
 

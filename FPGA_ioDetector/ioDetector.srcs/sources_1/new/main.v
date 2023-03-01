@@ -20,16 +20,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 parameter clkFreq = 50000000;
 parameter bitRate = 8000;
-parameter ioNum = 100;
+parameter ioNum = 125;
 
 module main(
     input clk,
-    output [ioNum-1:0] io,
-    output reg bitClk = 0
+    output [ioNum-1:0] io
+    //
     );
     //生成bit速率时钟信号
     reg [31:0] prescaler=0;
-    
+    reg bitClk = 0;
     
     always@(posedge clk)begin
         if(prescaler == clkFreq/(2*bitRate)-1)begin
